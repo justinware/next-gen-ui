@@ -1,0 +1,29 @@
+.coreLayoutRoot {
+
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.innerContainer {
+
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+/* contextBarSection {
+
+  height: 48px;
+} */
+
+.mainSection {
+
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  padding: 8px;
+  height: calc(100vh - 128px);
+}
