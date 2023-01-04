@@ -1,0 +1,5 @@
+.viewSwitcher {
+
+  display: flex !important;
+  flex-direction: column;
+}

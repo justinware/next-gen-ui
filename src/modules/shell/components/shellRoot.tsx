@@ -9,18 +9,19 @@ import {
   useAppDispatch as useDispatch
 } from '../../../store/hooks';
 import { toggleSettings } from '../store';
+import ViewSwitcher from './viewSwitcher';
 
 const ShellRoot: FC = () => {
 
   const dispatch = useDispatch();
-  const settingsOpen = useSelector(({ shell }) => shell.layout.settingsDrawerOpen);
+  const settingsOpen = useSelector(({ shell }) => shell.settingsDrawerOpen);
 
   return (
     <>
       <CoreLayout
         appBar={<AppBar />}
         contextBar={<ContextBar />}
-        content={<div>Content</div>}
+        content={<ViewSwitcher />}
       />
       <DrawerContainer
         title="Settings"

@@ -1,25 +1,24 @@
-export enum Views {
+import { AppPalette } from '../../../shared/types';
 
-  Site,
-  Gallery,
-  Image
-}
+// export enum Views {
 
-export enum Sites {
+//   Site,
+//   Gallery,
+//   Image
+// }
 
-  Site1,
-  Site2,
-  Site3
-};
+// export enum Sites {
 
-type Layout = {
-
-  settingsDrawerOpen: boolean
-};
+//   Site1,
+//   Site2,
+//   Site3
+// };
 
 export type ShellState = {
 
-  layout: Layout;
-  view: Views;
-  site: Sites;
+  palette: AppPalette;
+  settingsDrawerOpen: boolean;
+
+  // view: Views;
+  // site: Sites;
 };
