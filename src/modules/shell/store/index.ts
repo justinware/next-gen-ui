@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { blue, pink } from '@mui/material/colors';
 
 import { ShellState } from '../types';
 import reducers from './reducers';
@@ -10,13 +9,16 @@ const initialState: ShellState = {
   settingsDrawerOpen: false,
   palette: {
 
-    primary: blue,
-    secondary: pink
+    primary: 'indigo',
+    secondary: 'pink'
   }
 };
 
 const shellSlice = createSlice({ name, initialState, reducers });
 
-export const { toggleSettings } = shellSlice.actions;
+export const {
+  toggleSettings,
+  setPalette
+} = shellSlice.actions;
 
 export default shellSlice.reducer;

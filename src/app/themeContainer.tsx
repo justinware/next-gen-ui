@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { ParentComponent } from '../shared/types';
 import { useAppSelector as useSelector } from '../store/hooks';
+import { PALETTE_MAP } from '../shared/constants/theme';
 
 const ThemeContainer: FC<ParentComponent> = ({ children }) => {
 
@@ -10,7 +11,11 @@ const ThemeContainer: FC<ParentComponent> = ({ children }) => {
 
   const theme = createTheme({
 
-    palette: { ...palette }
+    palette: {
+
+      primary: PALETTE_MAP.get(palette.primary),
+      secondary: palette.secondary ? PALETTE_MAP.get(palette.secondary) : undefined
+    }
   });
 
   return (

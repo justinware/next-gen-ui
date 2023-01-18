@@ -13,7 +13,9 @@ const AppBarContainer: FC = () => {
   const dispatch = useDispatch();
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: 'primary.dark', color: 'common.white' }}>
+    <AppBar
+      position="static"
+      sx={{ backgroundColor: 'primary.dark', color: t => t.palette.getContrastText(t.palette.primary.dark) }}>
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Peak Next
@@ -24,6 +26,6 @@ const AppBarContainer: FC = () => {
       </Toolbar>
     </AppBar>
   );
-}
+};
 
 export default AppBarContainer;

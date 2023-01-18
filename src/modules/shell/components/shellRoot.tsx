@@ -2,7 +2,7 @@ import { FunctionComponent as FC } from 'react';
 
 import CoreLayout from './coreLayout';
 import AppBar from './appBar';
-import ContextBar from './contextBar';
+import NavBar from './navBar';
 import DrawerContainer from '../../../shared/components/drawerContainer';
 import {
   useAppSelector as useSelector,
@@ -10,6 +10,7 @@ import {
 } from '../../../store/hooks';
 import { toggleSettings } from '../store';
 import ViewSwitcher from './viewSwitcher';
+import SettingsPanel from './settingsPanel';
 
 const ShellRoot: FC = () => {
 
@@ -20,7 +21,7 @@ const ShellRoot: FC = () => {
     <>
       <CoreLayout
         appBar={<AppBar />}
-        contextBar={<ContextBar />}
+        contextBar={<NavBar />}
         content={<ViewSwitcher />}
       />
       <DrawerContainer
@@ -28,7 +29,7 @@ const ShellRoot: FC = () => {
         isOpen={settingsOpen}
         onClose={() => { dispatch(toggleSettings()); }}
       >
-        Settings Panel Here
+        <SettingsPanel />
       </DrawerContainer>
     </>
   );
