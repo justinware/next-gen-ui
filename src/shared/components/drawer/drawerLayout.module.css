@@ -1,0 +1,25 @@
+.drawerLayoutRoot {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  :global(.MuiDialogActions-root) {
+
+    padding: var(--default-spacing);
+  }
+
+  :global(.MuiDialogContent-root) {
+
+    padding: var(--default-spacing);
+    padding-left: var(--moderate-spacing);
+  }
+
+  :global(.MuiToolbar-root) {
+
+    padding-left: var(--moderate-spacing);
+    padding-right: var(--default-spacing);
+    display: flex;
+    justify-content: space-between;
+  }
+}

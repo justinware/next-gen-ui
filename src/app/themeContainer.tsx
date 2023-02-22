@@ -1,11 +1,11 @@
 import { FunctionComponent as FC } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import { ParentComponent } from '../shared/types';
+import { ParentComponentProps } from '../shared/types';
 import { useAppSelector as useSelector } from '../store/hooks';
 import { PALETTE_MAP } from '../shared/constants/theme';
 
-const ThemeContainer: FC<ParentComponent> = ({ children }) => {
+const ThemeContainer: FC<ParentComponentProps> = ({ children }) => {
 
   const palette = useSelector(({ shell }) => shell.palette);
 

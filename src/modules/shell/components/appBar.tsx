@@ -7,6 +7,9 @@ import SettingsIcon from '@mui/icons-material/Settings';
 
 import { useAppDispatch as useDispatch } from '../../../store/hooks';
 import { toggleSettings } from '../store';
+import styles from './appBar.module.css';
+
+const { appBarRoot } = styles;
 
 const AppBarContainer: FC = () => {
 
@@ -15,7 +18,8 @@ const AppBarContainer: FC = () => {
   return (
     <AppBar
       position="static"
-      sx={{ backgroundColor: 'primary.dark', color: t => t.palette.getContrastText(t.palette.primary.dark) }}>
+      className={appBarRoot}
+      sx={{ backgroundColor: 'primary.main', color: ({ palette }) => palette.getContrastText(palette.primary.main) }}>
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Peak Next

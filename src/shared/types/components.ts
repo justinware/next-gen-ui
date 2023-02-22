@@ -2,13 +2,20 @@ type Content = string | JSX.Element | string[] | JSX.Element[] | (string | JSX.E
 
 type Handler = () => void;
 
-export interface ParentComponent {
+export interface ParentComponentProps {
 
   children: Content;
 }
 
-export interface ModalComponent {
+export interface ModalComponentProps {
 
   isOpen: boolean;
   onClose: Handler;
+}
+
+export interface DialogComponentProps {
+
+  confirmText?: string;
+  onConfirm: Handler;
+  onCancel?: Handler;
 }

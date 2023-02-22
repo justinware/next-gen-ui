@@ -4,8 +4,8 @@ import Tooltip from '@mui/material/Tooltip';
 import { capitalCase } from 'capital-case';
 import CheckIcon from '@mui/icons-material/Check';
 
-import { PALETTE_MAP } from '../constants/theme';
-import { ColourPalette } from '../types';
+import { PALETTE_MAP } from '../../constants/theme';
+import { ColourPalette } from '../../types';
 import styles from './themePicker.module.css';
 
 const { themePicker } = styles;

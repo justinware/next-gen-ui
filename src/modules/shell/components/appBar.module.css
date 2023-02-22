@@ -1,0 +1,7 @@
+.appBarRoot {
+
+  :global(.MuiToolbar-root) {
+
+    padding-right: var(--default-spacing);
+  }
+}

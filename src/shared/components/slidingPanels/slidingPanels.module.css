@@ -1,0 +1,19 @@
+.slidingPanelsRoot {
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.container {
+
+  display: flex;
+  flex-grow: 1;
+}
+
+.panelWrapper {
+
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,18 @@
+.themePanelRoot {
+
+  display: flex;
+  flex-direction: column;
+
+  :global(.MuiToolbar-root) {
+
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    justify-content: space-between;
+
+    span {
+
+      width: 40px;
+    }
+  }
+}
