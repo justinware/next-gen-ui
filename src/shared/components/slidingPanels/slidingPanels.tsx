@@ -14,7 +14,8 @@ interface SlidingPanelsProps {
 
 const SlidingPanels: FC<SlidingPanelsProps> = ({ children, current }) => {
 
-  const getPanelWrapper = (child: JSX.Element, width: number) => (
+  const getPanelWrapper = (child: JSX.Element, index: number, width: number) => (
+    // TODO: Set current panel to opacity:1, all other ones opacity:0 (and transition accordingly)
     <div className={panelWrapper} style={{ width: `${width}%` }}>
       {child}
     </div>
@@ -34,7 +35,7 @@ const SlidingPanels: FC<SlidingPanelsProps> = ({ children, current }) => {
           width: `${panels * 100}%`
         }}
       >
-        { children.map(c => getPanelWrapper(c, width)) }
+        { children.map((c, i) => getPanelWrapper(c, i, width)) }
       </Box>
     </div>
   );

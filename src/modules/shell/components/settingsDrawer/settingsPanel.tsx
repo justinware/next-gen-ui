@@ -1,7 +1,12 @@
 import { FunctionComponent as FC } from 'react';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import Divider from '@mui/material/Divider';
+import MenuList from '@mui/material/MenuList';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import PaletteIcon from '@mui/icons-material/Palette';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 import packageData from '../../../../../package.json';
 import styles from './settingsPanel.module.css';
@@ -13,35 +18,8 @@ interface SettingsPanelProps extends DialogComponentProps {
   onThemeClick: () => void;
 }
 
-// import { ThemePicker } from '../../../shared/components';
-// import {
-//   useAppDispatch as useDispatch,
-//   useAppSelector as useSelector,
-// } from '../../../store/hooks';
-// import { setPalette } from '../store';
-
-const { settingsPanelRoot, itemRow } = styles;
+const { settingsPanelRoot, itemRow, menuSection } = styles;
 const { version } = packageData;
-
-// const ThemePanel: FC = () => {
-
-//   const dispatch = useDispatch();
-//   const currentPalette = useSelector(({ shell }) => shell.palette.primary);
-
-//   return (
-//     <div className={settingsPanelRoot}>
-//       <div className={itemRow}>
-//         <Typography variant="body1" style={{ alignSelf: 'flex-start' }}>
-//           Theme
-//         </Typography>
-//         <ThemePicker
-//           selectedPalette={currentPalette}
-//           onChange={(newPalette) => { dispatch(setPalette({ primary: newPalette })); } }
-//         />
-//       </div>
-//     </div>
-//   );
-// };
 
 const SettingsPanel: FC<SettingsPanelProps> = ({ onConfirm, onCancel, onThemeClick }) => {
 
@@ -60,24 +38,18 @@ const SettingsPanel: FC<SettingsPanelProps> = ({ onConfirm, onCancel, onThemeCli
             {`v${version}`}
           </Typography>
         </div>
-        <div className={itemRow}>
-          <Button
-            color="primary"
-            endIcon={<ChevronRightIcon />}
-            onClick={onThemeClick}
-          >
-            Theme
-          </Button>
+        <Divider />
+        <div className={menuSection}>
+          <MenuList>
+            <MenuItem onClick={onThemeClick}>
+              <ListItemIcon>
+                <PaletteIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText>Theme</ListItemText>
+              <ArrowForwardIcon color="action" />
+            </MenuItem>
+          </MenuList>
         </div>
-        {/* <div className={itemRow}>
-          <Typography variant="body1" style={{ alignSelf: 'flex-start' }}>
-            Theme
-          </Typography>
-          <ThemePicker
-            selectedPalette={currentPalette}
-            onChange={(newPalette) => { dispatch(setPalette({ primary: newPalette })); } }
-          />
-        </div> */}
       </div>
     </DrawerLayout>
   );

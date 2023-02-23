@@ -12,13 +12,13 @@
   :global(.MuiDialogContent-root) {
 
     padding: var(--default-spacing);
-    padding-left: var(--moderate-spacing);
+    padding-right: var(--half-spacing);
   }
 
   :global(.MuiToolbar-root) {
 
     padding-left: var(--moderate-spacing);
-    padding-right: var(--default-spacing);
+    padding-right: var(--half-spacing);
     display: flex;
     justify-content: space-between;
   }
