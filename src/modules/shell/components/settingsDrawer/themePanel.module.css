@@ -25,4 +25,12 @@
     padding-left: var(--moderate-spacing);
     padding-right: var(--default-spacing);
   }
+
+  .palettesSection {
+
+    padding-left: var(--moderate-spacing);
+    padding-right: var(--default-spacing);
+    display: flex;
+    flex-direction: column;
+  }
 }

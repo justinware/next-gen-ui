@@ -1,46 +1,74 @@
-// import { FunctionComponent as FC } from 'react';
-// import { Color } from '@mui/material';
-// import Tooltip from '@mui/material/Tooltip';
-// import { capitalCase } from 'capital-case';
-// import CheckIcon from '@mui/icons-material/Check';
+import { FunctionComponent as FC } from 'react';
+import { useTheme } from '@mui/material/styles';
+import CheckIcon from '@mui/icons-material/Check';
 
-// import { PALETTE_MAP } from '../../constants/theme';
-// import { ColourPalette } from '../../types';
-// import styles from './themePicker.module.css';
+import { PALETTE_MAP } from '../../constants/maps';
+import { Colour, ColourPalette, MuiColourPalette, ColourWeight } from '../../types';
+import styles from './themePicker.module.css';
+import { KeyValuePair } from '../../types';
 
-// const { themePicker } = styles;
+const { themePicker, paletteRow } = styles;
 
-// interface ThemePickerProps {
+interface ThemePickerProps {
 
-//   selectedPalette: ColourPalette;
-//   onChange: (newPalette: ColourPalette) => void;
-// }
+  selectedColour: Colour;
+  onChange: (newColour: Colour) => void;
+}
 
-// const ThemePicker: FC<ThemePickerProps> = ({ selectedPalette, onChange }) => {
+type PalettePair = KeyValuePair<ColourPalette, MuiColourPalette>;
 
-//   const paletteValues = [...PALETTE_MAP.keys()]
-//                                        .map(k => ([k, PALETTE_MAP.get(k as ColourPalette)]));
+const ThemePicker: FC<ThemePickerProps> = ({ selectedColour, onChange }) => {
 
-//   return (
-//     <div className={themePicker}>
-//       { paletteValues.map(pvp => {
+  const theme = useTheme();
+  const palettes = [...PALETTE_MAP.keys()]
+                     .map(key => ({ key, value: (PALETTE_MAP.get(key) as MuiColourPalette) } as PalettePair));
 
-//         const paletteKey = pvp[0] as ColourPalette;
+  const handleColourClick = (palette: ColourPalette, weight: ColourWeight) => {
 
-//         return (
-//           <Tooltip title={capitalCase(paletteKey.replace('-', ' '))}>
-//             <button
-//               key={`palette-button-${paletteKey}`}
-//               style={{ backgroundColor: (pvp[1] as Color)[500] }}
-//               onClick={() => { onChange(paletteKey) }}
-//             >
-//               { selectedPalette === paletteKey ? <CheckIcon /> : null }
-//             </button>
-//           </Tooltip>
-//         );
-//       })}
-//     </div>
-//   );
-// };
+    onChange({ palette, weight });
+  }
 
-// export default ThemePicker;
+  const getPaletteRow = (palette: PalettePair) => {
+
+    const weights =
+      Object.keys(palette.value)
+            .filter(w => !w.startsWith('A'))
+            .reverse()
+            .map(k => {
+              const key = k as unknown as ColourWeight;
+              return { key, value: palette.value[key] };
+            });
+
+    return (
+      <div className={paletteRow} key={`${palette.key}-palette-row`}>
+        { weights.map(wp => {
+
+          const isSelected = selectedColour.palette === palette.key && Number(selectedColour.weight) === Number(wp.key);
+          const backgroundColor = wp.value;
+          const color = theme.palette.getContrastText(backgroundColor);
+
+          return (
+            <button
+              key={`${palette.key}-${wp.key}-button`}
+              style={{
+                backgroundColor,
+                border: isSelected ? `${color} solid 2px` : undefined
+              }}
+              onClick={() => { handleColourClick(palette.key, wp.key as ColourWeight) }}
+            >
+              { isSelected && <CheckIcon style={{ color }} /> }
+            </button>
+          )})
+        }
+      </div>
+    )
+  }
+
+  return (
+    <div className={themePicker}>
+      { palettes.map(p => getPaletteRow(p)) }
+    </div>
+  );
+};
+
+export default ThemePicker;

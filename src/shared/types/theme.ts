@@ -6,7 +6,19 @@ import {
   LIGHT_COLOUR_VARIANT
 } from '../constants/theme';
 
-export type MuiColourPalette = {
+export type ColourWeight =
+  typeof COLOUR_WEIGHT_50 |
+  typeof COLOUR_WEIGHT_100 |
+  typeof COLOUR_WEIGHT_200 |
+  typeof COLOUR_WEIGHT_300 |
+  typeof COLOUR_WEIGHT_400 |
+  typeof COLOUR_WEIGHT_500 |
+  typeof COLOUR_WEIGHT_600 |
+  typeof COLOUR_WEIGHT_700 |
+  typeof COLOUR_WEIGHT_800 |
+  typeof COLOUR_WEIGHT_900;
+
+export interface MuiColourPalette extends Record<ColourWeight, string> {
   50: string;
   100: string;
   200: string;
@@ -17,10 +29,10 @@ export type MuiColourPalette = {
   700: string;
   800: string;
   900: string;
-  A100: string;
-  A200: string;
-  A400: string;
-  A700: string;
+  // A100: string;
+  // A200: string;
+  // A400: string;
+  // A700: string;
 }
 
 export type ColourPalette =
@@ -43,18 +55,6 @@ export type ColourPalette =
   typeof BROWN |
   typeof GREY |
   typeof BLUE_GREY;
-
-export type ColourWeight =
-  typeof COLOUR_WEIGHT_50 |
-  typeof COLOUR_WEIGHT_100 |
-  typeof COLOUR_WEIGHT_200 |
-  typeof COLOUR_WEIGHT_300 |
-  typeof COLOUR_WEIGHT_400 |
-  typeof COLOUR_WEIGHT_500 |
-  typeof COLOUR_WEIGHT_600 |
-  typeof COLOUR_WEIGHT_700 |
-  typeof COLOUR_WEIGHT_800 |
-  typeof COLOUR_WEIGHT_900;
 
 export type ColourVariant =
   typeof DARK_COLOUR_VARIANT |

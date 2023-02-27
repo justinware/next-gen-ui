@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 
 import { ShellState } from './types';
-import { AppPalette, ColourVariant } from '../../../shared/types';
+import { ColourVariant, Colour } from '../../../shared/types';
 
 
 export default {
@@ -13,5 +13,12 @@ export default {
   setAppBarVariant: (state: ShellState, { payload }: PayloadAction<ColourVariant>) => {
     state.theme.appBarVariant = payload;
   },
-  // setPalette: (state: ShellState, action: PayloadAction<AppPalette>) => { state.palette = action.payload }
+
+  setPrimaryColour: (state: ShellState, { payload }: PayloadAction<Colour>) => {
+    state.theme.palette.primary = payload;
+  },
+
+  setSecondaryColour: (state: ShellState, { payload }: PayloadAction<Colour>) => {
+    state.theme.palette.secondary = payload;
+  }
 };

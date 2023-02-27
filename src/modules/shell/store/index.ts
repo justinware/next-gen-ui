@@ -21,8 +21,9 @@ const shellSlice = createSlice({ name, initialState, reducers });
 
 export const {
   toggleSettings,
-  setAppBarVariant
-  // setPalette
+  setAppBarVariant,
+  setPrimaryColour,
+  setSecondaryColour
 } = shellSlice.actions;
 
 export default shellSlice.reducer;

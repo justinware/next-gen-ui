@@ -1,28 +1,29 @@
 .themePicker {
 
   display: flex;
-  flex-wrap: wrap;
-  padding-top: 8px;
-  width: 160px;
+  flex-direction: column;
+  margin-top: 16px;
 
-  button {
+  .paletteRow {
 
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-    margin-bottom: 8px;
-    margin-left: 8px;
-    border: 0;
-    padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
 
-    svg {
+    button {
 
-      color: #fff;
-      width: 16px;
-      height: 16px;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      border: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      svg {
+
+        width: 16px;
+        height: 16px;
+      }
     }
   }
 }

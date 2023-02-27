@@ -1,1 +1,1 @@
-// export { default as ThemePicker } from './themePicker';
+export { default as ThemePicker } from './themePicker';
