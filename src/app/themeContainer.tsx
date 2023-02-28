@@ -7,9 +7,12 @@ import { PALETTE_MAP } from '../shared/constants';
 
 const ThemeContainer: FC<ParentComponentProps> = ({ children }) => {
 
-  const { primary, secondary } = useSelector(({ shell }) => shell.theme.palette);
+  const { palette, paletteMode } = useSelector(({ shell }) => shell.theme);
+  const { primary, secondary } = palette;
+
   const theme = createTheme({
     palette: {
+      mode: paletteMode,
       primary: {
         main: (PALETTE_MAP.get(primary.palette) as MuiColourPalette)[primary.weight]
       },

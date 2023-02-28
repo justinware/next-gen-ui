@@ -29,10 +29,10 @@ const DrawerLayout: FC<DrawerLayoutProps> = ({
   return (
     <div className={drawerLayoutRoot}>
       <Toolbar>
-        <Typography variant="h6">
+        <Typography variant="h6" sx={{ color: 'text.secondary'}}>
           { title }
         </Typography>
-        <IconButton onClick={onCancel} color="primary">
+        <IconButton onClick={onCancel}>
           <CloseIcon />
         </IconButton>
       </Toolbar>
@@ -43,7 +43,7 @@ const DrawerLayout: FC<DrawerLayoutProps> = ({
         <Button
           autoFocus
           onClick={onConfirm}
-          variant="outlined"
+          variant="contained"
         >
           { confirmText }
         </Button>

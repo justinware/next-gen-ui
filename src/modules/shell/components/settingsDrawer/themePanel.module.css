@@ -32,5 +32,28 @@
     padding-right: var(--default-spacing);
     display: flex;
     flex-direction: column;
+
+    .palettePanel {
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    .coloursPreviewRow {
+
+      display: flex;
+      margin-top: 16px;
+      margin-bottom: 16px;
+      height: 64px;
+      justify-content: stretch;
+
+      div {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 33.333333333%
+      }
+    }
   }
 }

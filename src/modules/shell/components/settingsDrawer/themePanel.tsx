@@ -7,6 +7,8 @@ import Switch from '@mui/material/Switch';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import { useTheme } from '@mui/material/styles';
+import rgb2hex from 'rgb2hex';
 
 import styles from './themePanel.module.css';
 import {
@@ -17,7 +19,7 @@ import { DARK_COLOUR_VARIANT, MAIN_COLOUR_VARIANT } from '../../../../shared/con
 import { setAppBarVariant, setPrimaryColour, setSecondaryColour } from '../../store';
 import { SlidingPanels, ThemePicker } from '../../../../shared/components';
 
-const { themePanelRoot, itemRow, palettesSection } = styles;
+const { themePanelRoot, itemRow, palettesSection, palettePanel, coloursPreviewRow } = styles;
 
 interface ThemePanelProps {
 
@@ -27,6 +29,7 @@ interface ThemePanelProps {
 const ThemePanel: FC<ThemePanelProps> = ({ onBackClick }) => {
 
   const dispatch = useDispatch();
+  const theme = useTheme();
   const appBarDarkChecked = useSelector(({ shell }) => shell.theme.appBarVariant === DARK_COLOUR_VARIANT);
   const primaryColour = useSelector(({ shell }) => shell.theme.palette.primary);
   const secondaryColour = useSelector(({ shell }) => shell.theme.palette.secondary);
@@ -41,13 +44,20 @@ const ThemePanel: FC<ThemePanelProps> = ({ onBackClick }) => {
     }
   };
 
+  const getColourTile = (backgroundColor: string) => (
+
+    <div style={{ backgroundColor, color: theme.palette.getContrastText(backgroundColor) }}>
+      <Typography variant="caption">{backgroundColor}</Typography>
+    </div>
+  );
+
   return (
     <div className={themePanelRoot}>
       <Toolbar>
-        <IconButton onClick={onBackClick} color="primary">
+        <IconButton onClick={onBackClick}>
           <ArrowBackIcon />
         </IconButton>
-        <Typography variant="subtitle1">
+        <Typography variant="subtitle1" sx={{ color: 'text.secondary'}}>
           Theme
         </Typography>
         <span>&nbsp;</span>
@@ -74,14 +84,28 @@ const ThemePanel: FC<ThemePanelProps> = ({ onBackClick }) => {
           </Tabs>
         </Box>
         <SlidingPanels current={selectedPalette}>
-          <ThemePicker
-            selectedColour={primaryColour}
-            onChange={newColour => { dispatch(setPrimaryColour(newColour)); }}
-          />
-          <ThemePicker
-            selectedColour={secondaryColour}
-            onChange={newColour => { dispatch(setSecondaryColour(newColour)); }}
-          />
+          <div className={palettePanel}>
+            <div className={coloursPreviewRow}>
+              {getColourTile(rgb2hex(theme.palette.primary.dark).hex)}
+              {getColourTile(theme.palette.primary.main)}
+              {getColourTile(rgb2hex(theme.palette.primary.light).hex)}
+            </div>
+            <ThemePicker
+              selectedColour={primaryColour}
+              onChange={newColour => { dispatch(setPrimaryColour(newColour)); }}
+            />
+          </div>
+          <div className={palettePanel}>
+            <div className={coloursPreviewRow}>
+              {getColourTile(rgb2hex(theme.palette.secondary.dark).hex)}
+              {getColourTile(theme.palette.secondary.main)}
+              {getColourTile(rgb2hex(theme.palette.secondary.light).hex)}
+            </div>
+            <ThemePicker
+              selectedColour={secondaryColour}
+              onChange={newColour => { dispatch(setSecondaryColour(newColour)); }}
+            />
+          </div>
         </SlidingPanels>
       </div>
     </div>

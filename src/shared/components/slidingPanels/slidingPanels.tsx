@@ -15,10 +15,17 @@ interface SlidingPanelsProps {
 const SlidingPanels: FC<SlidingPanelsProps> = ({ children, current }) => {
 
   const getPanelWrapper = (child: JSX.Element, index: number, width: number) => (
-    // TODO: Set current panel to opacity:1, all other ones opacity:0 (and transition accordingly)
-    <div className={panelWrapper} style={{ width: `${width}%` }}>
+    <Box
+      key={`panel-${index}`}
+      className={panelWrapper}
+      sx={{
+        width: `${width}%`,
+        opacity: current === index ? 1 : 0,
+        transition: ({ transitions }) => transitions.create('opacity'),
+      }}
+    >
       {child}
-    </div>
+    </Box>
   );
 
   const panels = children.length;

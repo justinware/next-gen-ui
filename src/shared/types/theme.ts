@@ -61,6 +61,10 @@ export type ColourVariant =
   typeof MAIN_COLOUR_VARIANT |
   typeof LIGHT_COLOUR_VARIANT;
 
+export type PaletteMode =
+  typeof LIGHT_COLOUR_VARIANT |
+  typeof DARK_COLOUR_VARIANT;
+
 export type Colour = {
   palette: ColourPalette;
   weight: ColourWeight;

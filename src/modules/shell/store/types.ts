@@ -1,8 +1,9 @@
-import { AppPalette, ColourVariant } from '../../../shared/types';
+import { AppPalette, ColourVariant, PaletteMode } from '../../../shared/types';
 
 export type ThemeSettings = {
   appBarVariant: ColourVariant;
   palette: AppPalette;
+  paletteMode: PaletteMode;
 }
 
 export type ShellState = {
