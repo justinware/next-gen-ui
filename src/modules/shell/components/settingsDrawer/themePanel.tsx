@@ -15,9 +15,9 @@ import {
   useAppSelector as useSelector,
   useAppDispatch as useDispatch
 } from '../../../../store/hooks';
-import { DARK_COLOUR_VARIANT, MAIN_COLOUR_VARIANT } from '../../../../shared/constants';
-import { setAppBarVariant, setPrimaryColour, setSecondaryColour } from '../../store';
-import { SlidingPanels, ThemePicker } from '../../../../shared/components';
+import { DARK_COLOUR_VARIANT } from '../../../../shared/constants';
+import { setPrimaryColour, setSecondaryColour, togglePaletteMode, toggleAppBarColoured } from '../../store';
+import { SlidingPanels, ThemePicker, ContrastBox } from '../../../../shared/components';
 
 const { themePanelRoot, itemRow, palettesSection, palettePanel, coloursPreviewRow } = styles;
 
@@ -30,25 +30,17 @@ const ThemePanel: FC<ThemePanelProps> = ({ onBackClick }) => {
 
   const dispatch = useDispatch();
   const theme = useTheme();
-  const appBarDarkChecked = useSelector(({ shell }) => shell.theme.appBarVariant === DARK_COLOUR_VARIANT);
+  const darkMode = useSelector(({ shell }) => shell.theme.paletteMode === DARK_COLOUR_VARIANT);
+  const appBarColoured = useSelector(({ shell }) => shell.theme.appBarColoured);
   const primaryColour = useSelector(({ shell }) => shell.theme.palette.primary);
   const secondaryColour = useSelector(({ shell }) => shell.theme.palette.secondary);
   const [selectedPalette, setSelectedPalette] = useState<number>(0);
 
-  const handleAppBarDarkChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-
-    if (event.target.checked) {
-      dispatch(setAppBarVariant(DARK_COLOUR_VARIANT));
-    } else {
-      dispatch(setAppBarVariant(MAIN_COLOUR_VARIANT));
-    }
-  };
-
   const getColourTile = (backgroundColor: string) => (
 
-    <div style={{ backgroundColor, color: theme.palette.getContrastText(backgroundColor) }}>
+    <ContrastBox backgroundColor={backgroundColor}>
       <Typography variant="caption">{backgroundColor}</Typography>
-    </div>
+    </ContrastBox>
   );
 
   return (
@@ -64,12 +56,23 @@ const ThemePanel: FC<ThemePanelProps> = ({ onBackClick }) => {
       </Toolbar>
       <div className={itemRow}>
         <Typography variant="body1">
-          App Bar Dark
+          Dark Mode
         </Typography>
         <Switch
           color="secondary"
-          checked={appBarDarkChecked}
-          onChange={handleAppBarDarkChange}
+          checked={darkMode}
+          onChange={() => { dispatch(togglePaletteMode()); }}
+        />
+      </div>
+      <div className={itemRow}>
+        <Typography variant="body1" sx={{ color: darkMode ? theme.palette.text.disabled : 'inherit' }}>
+          App Bar Coloured
+        </Typography>
+        <Switch
+          color="secondary"
+          checked={appBarColoured}
+          disabled={darkMode}
+          onChange={() => { dispatch(toggleAppBarColoured()); }}
         />
       </div>
       <div className={palettesSection}>

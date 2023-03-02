@@ -12,7 +12,6 @@ const ShellRoot: FC = () => {
     <>
       <CoreLayout
         appBar={<AppBar />}
-        contextBar={<NavBar />}
         content={<ViewSwitcher />}
       />
       <SettingsDrawer />

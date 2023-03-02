@@ -1,7 +1,23 @@
 .appBarRoot {
 
+  display: flex;
+  flex-direction: column;
+
   :global(.MuiToolbar-root) {
 
     padding-right: var(--default-spacing);
+  }
+
+  :global(.MuiTabs-root) {
+
+    button {
+
+      min-width: 114px;
+    }
+
+    button:nth-of-type(1) {
+
+      padding-left: var(--moderate-spacing);
+    }
   }
 }

@@ -9,12 +9,12 @@ const initialState: ShellState = {
 
   settingsDrawerOpen: false,
   theme: {
-    appBarVariant: DARK_COLOUR_VARIANT,
+    appBarColoured: false,
     palette: {
       primary: { palette: BLUE, weight: COLOUR_WEIGHT_700 },
       secondary: { palette: PINK, weight: COLOUR_WEIGHT_700 },
     },
-    paletteMode: DARK_COLOUR_VARIANT
+    paletteMode: LIGHT_COLOUR_VARIANT
   }
 };
 
@@ -22,9 +22,10 @@ const shellSlice = createSlice({ name, initialState, reducers });
 
 export const {
   toggleSettings,
-  setAppBarVariant,
   setPrimaryColour,
-  setSecondaryColour
+  setSecondaryColour,
+  togglePaletteMode,
+  toggleAppBarColoured
 } = shellSlice.actions;
 
 export default shellSlice.reducer;

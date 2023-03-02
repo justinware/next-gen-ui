@@ -1,3 +1,3 @@
 export * from './drawer';
-export * from './themePicker';
+export * from './theme';
 export * from './slidingPanels';

@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 
 import { ParentComponentProps, DialogComponentProps } from '../../types/components';
 import styles from './drawerLayout.module.css';
+import { DARK_COLOUR_VARIANT } from '../../constants';
 
 interface DrawerLayoutProps extends DialogComponentProps, ParentComponentProps {
 
@@ -44,6 +45,9 @@ const DrawerLayout: FC<DrawerLayoutProps> = ({
           autoFocus
           onClick={onConfirm}
           variant="contained"
+          sx={{
+            border: ({ palette }) => palette.mode === DARK_COLOUR_VARIANT ? `solid 1px ${palette.primary.light}` : undefined
+          }}
         >
           { confirmText }
         </Button>

@@ -9,11 +9,12 @@ const { viewSwitcher } = styles;
 const ViewSwitcher: FC = () => {
 
   return (
-    <Container maxWidth="lg" className={viewSwitcher}>
-      <Paper elevation={2} sx={{ flex: 1 }}>
-        Content Here
-      </Paper>
-    </Container>
+    null
+    // <Container maxWidth="lg" className={viewSwitcher}>
+    //   <Paper elevation={2} sx={{ flex: 1 }}>
+    //     Content Here
+    //   </Paper>
+    // </Container>
   );
 };
 

@@ -6,7 +6,7 @@ import styles from './coreLayout.module.css';
 interface CoreLayoutProps {
 
   appBar: JSX.Element;
-  contextBar: JSX.Element;
+  contextBar?: JSX.Element;
   content: JSX.Element;
 }
 
@@ -18,8 +18,8 @@ const CoreLayout: FC<CoreLayoutProps> = ({ appBar, contextBar, content }) => {
     <div className={coreLayoutRoot}>
       { appBar }
       <div className={innerContainer}>
-        { contextBar }
-        <Box className={mainSection} sx={{ backgroundColor: t => t.palette.grey[100] }}>
+        { contextBar && contextBar }
+        <Box className={mainSection} sx={{ backgroundColor: ({ palette }) => palette.background.default }}>
           { content }
         </Box>
       </div>
