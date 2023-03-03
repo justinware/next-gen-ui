@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { useTheme } from '@mui/material/styles';
+import Divider from '@mui/material/Divider';
 
 import {
   useAppSelector as useSelector,
@@ -21,14 +22,17 @@ const { appBarRoot } = styles;
 const AppBarContainer: FC = () => {
 
   const dispatch = useDispatch();
-  const { palette } = useTheme();
+  const theme = useTheme();
+  const { palette } = theme;
+  const lightMode = palette.mode === LIGHT_COLOUR_VARIANT;
   const appBarColoured = useSelector(({ shell }) => shell.theme.appBarColoured);
-  const backgroundColor =  palette.mode === LIGHT_COLOUR_VARIANT ?
-    (appBarColoured ? palette.primary.main : palette.background.paper) : undefined
+  const backgroundColor =  lightMode ?
+    (appBarColoured ? palette.primary.main : palette.background.paper) : undefined;
 
   return (
     <AppBar
       className={appBarRoot}
+      position="static"
     >
       <ContrastBox backgroundColor={backgroundColor}>
         <Toolbar>
@@ -39,7 +43,8 @@ const AppBarContainer: FC = () => {
             <SettingsIcon />
           </IconButton>
         </Toolbar>
-        <NavBar />
+        <NavBar muiTheme={theme} colouredBackground={appBarColoured} />
+        {!appBarColoured ? <Divider /> : <></>}
       </ContrastBox>
     </AppBar>
   );
