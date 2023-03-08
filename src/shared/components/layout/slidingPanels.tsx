@@ -2,14 +2,13 @@ import { FunctionComponent as FC } from 'react';
 import Box from '@mui/material/Box';
 
 import styles from './slidingPanels.module.css';
+import { ParentComponentProps } from '../../types';
 
 const { slidingPanelsRoot, container, panelWrapper } = styles;
 
-interface SlidingPanelsProps {
+interface SlidingPanelsProps extends ParentComponentProps<JSX.Element[]> {
 
-  children: JSX.Element[];
   current: number;
-
 };
 
 const SlidingPanels: FC<SlidingPanelsProps> = ({ children, current }) => {

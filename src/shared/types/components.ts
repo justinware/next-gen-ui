@@ -2,9 +2,9 @@ type Content = string | JSX.Element | string[] | JSX.Element[] | (string | JSX.E
 
 type Handler = () => void;
 
-export interface ParentComponentProps {
+export interface ParentComponentProps<T = Content> {
 
-  children: Content;
+  children: T;
 }
 
 export interface ModalComponentProps {

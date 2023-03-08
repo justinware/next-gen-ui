@@ -1,4 +1,4 @@
-import { AppPalette, ColourVariant, PaletteMode } from '../../../shared/types';
+import { AppPalette, PaletteMode } from '../../../shared/types';
 
 export type ThemeSettings = {
   appBarColoured: boolean;

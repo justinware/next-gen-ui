@@ -4,6 +4,7 @@ import { useTheme } from '@mui/material/styles';
 import { ParentComponentProps } from '../../types';
 
 interface ContrastBoxProps extends ParentComponentProps {
+
   backgroundColor?: string;
 }
 

@@ -5,7 +5,7 @@ import { Colour } from '../../../shared/types';
 import {
   DARK_COLOUR_VARIANT,
   LIGHT_COLOUR_VARIANT,
-  COLOUR_WEIGHT_500,
+  COLOUR_WEIGHT_300,
   COLOUR_WEIGHT_200
 } from '../../../shared/constants';
 
@@ -33,9 +33,11 @@ export default {
     if (targetMode === DARK_COLOUR_VARIANT) {
       theme.palette.primary.weight = COLOUR_WEIGHT_200;
       theme.palette.secondary.weight = COLOUR_WEIGHT_200;
+      theme.appBarColoured = false;
     } else {
-      theme.palette.primary.weight = COLOUR_WEIGHT_500;
-      theme.palette.secondary.weight = COLOUR_WEIGHT_500;
+      // TODO: Should we default to 300 or like 500 here ?
+      theme.palette.primary.weight = COLOUR_WEIGHT_300;
+      theme.palette.secondary.weight = COLOUR_WEIGHT_300;
     }
 
     theme.paletteMode = targetMode;

@@ -6,7 +6,7 @@ import { PALETTE_MAP } from '../../constants/maps';
 import { Colour, ColourPalette, MuiColourPalette, ColourWeight } from '../../types';
 import styles from './themePicker.module.css';
 import { KeyValuePair } from '../../types';
-import { DARK_COLOUR_VARIANT, LIGHT_COLOUR_VARIANT, COLOUR_WEIGHT_200, COLOUR_WEIGHT_500 } from '../../constants';
+import { DARK_COLOUR_VARIANT, LIGHT_COLOUR_VARIANT, COLOUR_WEIGHT_200, COLOUR_WEIGHT_300 } from '../../constants';
 
 const { themePicker, paletteRow } = styles;
 
@@ -33,7 +33,7 @@ const ThemePicker: FC<ThemePickerProps> = ({ selectedColour, onChange }) => {
 
     const weights =
       Object.keys(palette.value)
-            .filter(w => !w.startsWith('A') && w !== '400' && w !== '300')
+            .filter(w => !w.startsWith('A'))
             .reverse()
             .map(k => {
               const key = k as unknown as ColourWeight;
@@ -58,7 +58,7 @@ const ThemePicker: FC<ThemePickerProps> = ({ selectedColour, onChange }) => {
               onClick={() => { handleColourClick(palette.key, wp.key as ColourWeight) }}
               disabled={
                 (theme.palette.mode === DARK_COLOUR_VARIANT && Number(wp.key) > COLOUR_WEIGHT_200) ||
-                (theme.palette.mode === LIGHT_COLOUR_VARIANT && Number(wp.key) < COLOUR_WEIGHT_500)
+                (theme.palette.mode === LIGHT_COLOUR_VARIANT && Number(wp.key) < COLOUR_WEIGHT_300)
               }
             >
               { isSelected && <CheckIcon style={{ color }} /> }

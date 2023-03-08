@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { ShellState } from './types';
 import reducers from './reducers';
 import { MODULE_KEY as name } from './constants';
-import { BLUE, COLOUR_WEIGHT_700, PINK, DARK_COLOUR_VARIANT, LIGHT_COLOUR_VARIANT } from '../../../shared/constants';
+import { BLUE, COLOUR_WEIGHT_700, PINK, LIGHT_COLOUR_VARIANT } from '../../../shared/constants';
 
 const initialState: ShellState = {
 

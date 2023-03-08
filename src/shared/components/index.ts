@@ -1,3 +1,2 @@
-export * from './drawer';
+export * from './layout';
 export * from './theme';
-export * from './slidingPanels';
