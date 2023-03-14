@@ -1,4 +1,4 @@
-import { FunctionComponent as FC } from 'react';
+/* eslint-disable */
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 
@@ -6,7 +6,7 @@ import styles from './viewSwitcher.module.css';
 
 const { viewSwitcher } = styles;
 
-const ViewSwitcher: FC = () => {
+const ViewSwitcher = () => {
 
   return (
     null

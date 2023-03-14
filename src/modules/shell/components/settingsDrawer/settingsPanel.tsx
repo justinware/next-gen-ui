@@ -1,4 +1,3 @@
-import { FunctionComponent as FC } from 'react';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import MenuList from '@mui/material/MenuList';
@@ -21,38 +20,36 @@ interface SettingsPanelProps extends DialogComponentProps {
 const { settingsPanelRoot, itemRow, menuSection } = styles;
 const { version } = packageData;
 
-const SettingsPanel: FC<SettingsPanelProps> = ({ onConfirm, onCancel, onThemeClick }) => {
+const SettingsPanel = ({ onConfirm, onCancel, onThemeClick }: SettingsPanelProps) => (
 
-  return (
-    <DrawerLayout
-      title='Settings'
-      onConfirm={onConfirm}
-      onCancel={onCancel}
-    >
-      <div className={settingsPanelRoot}>
-        <div className={itemRow}>
-          <Typography variant="body1">
-            Version
-          </Typography>
-          <Typography variant="body1">
-            {`v${version}`}
-          </Typography>
-        </div>
-        <Divider />
-        <div className={menuSection}>
-          <MenuList>
-            <MenuItem onClick={onThemeClick}>
-              <ListItemIcon>
-                <PaletteIcon fontSize="small" />
-              </ListItemIcon>
-              <ListItemText>Theme</ListItemText>
-              <ArrowForwardIcon color="action" />
-            </MenuItem>
-          </MenuList>
-        </div>
+  <DrawerLayout
+    title="Settings"
+    onConfirm={onConfirm}
+    onCancel={onCancel}
+  >
+    <div className={settingsPanelRoot}>
+      <div className={itemRow}>
+        <Typography variant="body1">
+          Version
+        </Typography>
+        <Typography variant="body1">
+          {`v${version}`}
+        </Typography>
       </div>
-    </DrawerLayout>
-  );
-};
+      <Divider />
+      <div className={menuSection}>
+        <MenuList>
+          <MenuItem onClick={onThemeClick}>
+            <ListItemIcon>
+              <PaletteIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText>Theme</ListItemText>
+            <ArrowForwardIcon color="action" />
+          </MenuItem>
+        </MenuList>
+      </div>
+    </div>
+  </DrawerLayout>
+);
 
 export default SettingsPanel;

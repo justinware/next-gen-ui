@@ -1,4 +1,3 @@
-import { FunctionComponent as FC } from 'react';
 import Drawer from '@mui/material/Drawer';
 
 import { ParentComponentProps, ModalComponentProps } from '../../types/components';
@@ -8,19 +7,16 @@ interface DrawerContainerProps extends ParentComponentProps, ModalComponentProps
 
 const { drawerContainerRoot } = styles;
 
-const DrawerContainer: FC<DrawerContainerProps> = ({ children, isOpen, onClose }) => {
-
-  return (
-    <Drawer
-      anchor="right"
-      open={isOpen}
-      onClose={onClose}
-    >
-      <div className={drawerContainerRoot}>
-        { children }
-      </div>
-    </Drawer>
-  );
-};
+const DrawerContainer = ({ children, isOpen, onClose } : DrawerContainerProps) => (
+  <Drawer
+    anchor="right"
+    open={isOpen}
+    onClose={onClose}
+  >
+    <div className={drawerContainerRoot}>
+      { children }
+    </div>
+  </Drawer>
+);
 
 export default DrawerContainer;

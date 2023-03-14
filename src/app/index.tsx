@@ -1,4 +1,3 @@
-import { FunctionComponent as FC } from 'react';
 import { Provider as ReduxStoreProvider } from 'react-redux';
 import CssBaseline from '@mui/material/CssBaseline';
 
@@ -10,16 +9,13 @@ import ShellRoot from '../modules/shell/components/shellRoot';
 
 import { store } from '../store';
 
-const App: FC = () => {
-
-  return (
-    <ReduxStoreProvider store={store}>
-      <ThemeContainer>
-        <CssBaseline />
-        <ShellRoot />
-      </ThemeContainer>
-    </ReduxStoreProvider>
-  );
-};
+const App = () => (
+  <ReduxStoreProvider store={store}>
+    <ThemeContainer>
+      <CssBaseline />
+      <ShellRoot />
+    </ThemeContainer>
+  </ReduxStoreProvider>
+);
 
 export default App;

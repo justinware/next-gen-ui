@@ -1,4 +1,3 @@
-import { FunctionComponent as FC } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -19,15 +18,16 @@ import { LIGHT_COLOUR_VARIANT } from '../../../shared/constants';
 
 const { appBarRoot } = styles;
 
-const AppBarContainer: FC = () => {
+const AppBarContainer = () => {
 
   const dispatch = useDispatch();
   const theme = useTheme();
   const { palette } = theme;
   const lightMode = palette.mode === LIGHT_COLOUR_VARIANT;
   const appBarColoured = useSelector(({ shell }) => shell.theme.appBarColoured);
-  const backgroundColor =  lightMode ?
-    (appBarColoured ? palette.primary.main : palette.background.paper) : undefined;
+  const backgroundColor = lightMode
+    ? (appBarColoured ? palette.primary.main
+      : palette.background.paper) : undefined;
 
   return (
     <AppBar

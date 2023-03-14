@@ -13,7 +13,7 @@ export default {
 
   toggleSettings: (state: ShellState) => {
 
-    state.settingsDrawerOpen = !state.settingsDrawerOpen
+    state.settingsDrawerOpen = !state.settingsDrawerOpen;
   },
 
   setPrimaryColour: ({ theme }: ShellState, { payload }: PayloadAction<Colour>) => {
@@ -28,7 +28,9 @@ export default {
 
   togglePaletteMode: ({ theme }: ShellState) => {
 
-    const targetMode = theme.paletteMode === LIGHT_COLOUR_VARIANT ? DARK_COLOUR_VARIANT : LIGHT_COLOUR_VARIANT;
+    const targetMode = theme.paletteMode === LIGHT_COLOUR_VARIANT
+      ? DARK_COLOUR_VARIANT
+      : LIGHT_COLOUR_VARIANT;
 
     if (targetMode === DARK_COLOUR_VARIANT) {
       theme.palette.primary.weight = COLOUR_WEIGHT_200;
@@ -45,6 +47,6 @@ export default {
 
   toggleAppBarColoured: ({ theme }: ShellState) => {
 
-    theme.appBarColoured = !theme.appBarColoured
-  },
+    theme.appBarColoured = !theme.appBarColoured;
+  }
 };

@@ -18,6 +18,12 @@
       justify-content: center;
       align-items: center;
 
+      &:hover {
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+        transform: scale(1.15);
+        z-index: 100;
+      }
+
       svg {
 
         width: 16px;

@@ -1,11 +1,10 @@
-import { FunctionComponent as FC } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { ParentComponentProps, MuiColourPalette } from '../shared/types';
 import { useAppSelector as useSelector } from '../store/hooks';
 import { PALETTE_MAP, DARK_COLOUR_VARIANT } from '../shared/constants';
 
-const ThemeContainer: FC<ParentComponentProps> = ({ children }) => {
+const ThemeContainer = ({ children }: ParentComponentProps) => {
 
   const { palette, paletteMode } = useSelector(({ shell }) => shell.theme);
   const { primary, secondary } = palette;
@@ -16,12 +15,12 @@ const ThemeContainer: FC<ParentComponentProps> = ({ children }) => {
       primary: {
         main: (PALETTE_MAP.get(primary.palette) as MuiColourPalette)[primary.weight]
       },
-     secondary: {
+      secondary: {
         main: (PALETTE_MAP.get(secondary.palette) as MuiColourPalette)[secondary.weight]
-     },
-     background: {
-       default: paletteMode === DARK_COLOUR_VARIANT ? '#121212' : '#fff'
-     }
+      },
+      background: {
+        default: paletteMode === DARK_COLOUR_VARIANT ? '#121212' : '#fff'
+      }
     }
   });
 

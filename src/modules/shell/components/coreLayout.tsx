@@ -1,4 +1,3 @@
-import { FunctionComponent as FC } from 'react';
 import Box from '@mui/material/Box';
 
 import styles from './coreLayout.module.css';
@@ -10,7 +9,7 @@ interface CoreLayoutProps {
   content: JSX.Element;
 }
 
-const CoreLayout: FC<CoreLayoutProps> = ({ appBar, contextBar, content }) => {
+const CoreLayout = ({ appBar, contextBar, content }: CoreLayoutProps) => {
 
   const { coreLayoutRoot, innerContainer, mainSection } = styles;
 
@@ -19,7 +18,10 @@ const CoreLayout: FC<CoreLayoutProps> = ({ appBar, contextBar, content }) => {
       { appBar }
       <div className={innerContainer}>
         { contextBar && contextBar }
-        <Box className={mainSection} sx={{ backgroundColor: ({ palette }) => palette.background.default }}>
+        <Box
+          className={mainSection}
+          sx={{ backgroundColor: ({ palette }) => palette.background.default }}
+        >
           { content }
         </Box>
       </div>

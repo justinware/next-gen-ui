@@ -1,4 +1,4 @@
-import { FunctionComponent as FC , useState} from 'react';
+import { useState } from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -16,17 +16,25 @@ import {
   useAppDispatch as useDispatch
 } from '../../../../store/hooks';
 import { DARK_COLOUR_VARIANT } from '../../../../shared/constants';
-import { setPrimaryColour, setSecondaryColour, togglePaletteMode, toggleAppBarColoured } from '../../store';
+import {
+  setPrimaryColour, setSecondaryColour, togglePaletteMode, toggleAppBarColoured
+} from '../../store';
 import { SlidingPanels, ThemePicker, ContrastBox } from '../../../../shared/components';
 
-const { themePanelRoot, itemRow, palettesSection, palettePanel, coloursPreviewRow } = styles;
+const {
+  themePanelRoot,
+  itemRow,
+  palettesSection,
+  palettePanel,
+  coloursPreviewRow
+} = styles;
 
 interface ThemePanelProps {
 
   onBackClick: () => void;
 }
 
-const ThemePanel: FC<ThemePanelProps> = ({ onBackClick }) => {
+const ThemePanel = ({ onBackClick }: ThemePanelProps) => {
 
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -49,7 +57,7 @@ const ThemePanel: FC<ThemePanelProps> = ({ onBackClick }) => {
         <IconButton onClick={onBackClick}>
           <ArrowBackIcon />
         </IconButton>
-        <Typography variant="subtitle1" sx={{ color: 'text.secondary'}}>
+        <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>
           Theme
         </Typography>
         <span>&nbsp;</span>
@@ -79,7 +87,7 @@ const ThemePanel: FC<ThemePanelProps> = ({ onBackClick }) => {
         <Box sx={{ borderBottom: 1, borderColor: 'divider', width: '100%' }}>
           <Tabs
             value={selectedPalette}
-            onChange={(_, newSelected) => { setSelectedPalette(newSelected);  }}
+            onChange={(_, newSelected) => { setSelectedPalette(newSelected); }}
             variant="fullWidth"
           >
             <Tab label="Primary" />

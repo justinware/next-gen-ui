@@ -1,4 +1,3 @@
-import { FunctionComponent as FC } from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import DialogContent from '@mui/material/DialogContent';
@@ -18,42 +17,39 @@ interface DrawerLayoutProps extends DialogComponentProps, ParentComponentProps {
 
 const { drawerLayoutRoot } = styles;
 
-const DrawerLayout: FC<DrawerLayoutProps> = ({
+const DrawerLayout = ({
 
   confirmText = 'OK',
   onConfirm,
   onCancel,
   children,
   title
-}) => {
-
-  return (
-    <div className={drawerLayoutRoot}>
-      <Toolbar>
-        <Typography variant="h6" sx={{ color: 'text.secondary'}}>
-          { title }
-        </Typography>
-        <IconButton onClick={onCancel}>
-          <CloseIcon />
-        </IconButton>
-      </Toolbar>
-      <DialogContent>
-        { children }
-      </DialogContent>
-      <DialogActions>
-        <Button
-          autoFocus
-          onClick={onConfirm}
-          variant="contained"
-          sx={{
-            border: ({ palette }) => palette.mode === DARK_COLOUR_VARIANT ? `solid 1px ${palette.primary.light}` : undefined
-          }}
-        >
-          { confirmText }
-        </Button>
-      </DialogActions>
-    </div>
-  );
-};
+}: DrawerLayoutProps) => (
+  <div className={drawerLayoutRoot}>
+    <Toolbar>
+      <Typography variant="h6" sx={{ color: 'text.secondary' }}>
+        { title }
+      </Typography>
+      <IconButton onClick={onCancel}>
+        <CloseIcon />
+      </IconButton>
+    </Toolbar>
+    <DialogContent>
+      { children }
+    </DialogContent>
+    <DialogActions>
+      <Button
+        autoFocus
+        onClick={onConfirm}
+        variant="contained"
+        sx={{
+          border: ({ palette }) => (palette.mode === DARK_COLOUR_VARIANT ? `solid 1px ${palette.primary.light}` : undefined)
+        }}
+      >
+        { confirmText }
+      </Button>
+    </DialogActions>
+  </div>
+);
 
 export default DrawerLayout;

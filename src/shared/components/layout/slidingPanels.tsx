@@ -1,4 +1,3 @@
-import { FunctionComponent as FC } from 'react';
 import Box from '@mui/material/Box';
 
 import styles from './slidingPanels.module.css';
@@ -9,9 +8,9 @@ const { slidingPanelsRoot, container, panelWrapper } = styles;
 interface SlidingPanelsProps extends ParentComponentProps<JSX.Element[]> {
 
   current: number;
-};
+}
 
-const SlidingPanels: FC<SlidingPanelsProps> = ({ children, current }) => {
+const SlidingPanels = ({ children, current }: SlidingPanelsProps) => {
 
   const getPanelWrapper = (child: JSX.Element, index: number, width: number) => (
     <Box
@@ -20,7 +19,7 @@ const SlidingPanels: FC<SlidingPanelsProps> = ({ children, current }) => {
       sx={{
         width: `${width}%`,
         opacity: current === index ? 1 : 0,
-        transition: ({ transitions }) => transitions.create('opacity'),
+        transition: ({ transitions }) => transitions.create('opacity')
       }}
     >
       {child}

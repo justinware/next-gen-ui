@@ -1,4 +1,4 @@
-import { FunctionComponent as FC, useState } from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -13,12 +13,13 @@ interface TabInfo extends Idable {
 
 interface NavBarProps {
 
+  /* eslint-disable-next-line react/no-unused-prop-types */
   tabs?: TabInfo[];
   muiTheme: Theme;
   colouredBackground: boolean;
 }
 
-const NavBar: FC<NavBarProps> = ({ muiTheme, colouredBackground }) => {
+const NavBar = ({ muiTheme, colouredBackground }: NavBarProps) => {
 
   const [selected, setSelected] = useState<number>(0);
   const { primary } = muiTheme.palette;
@@ -43,6 +44,6 @@ const NavBar: FC<NavBarProps> = ({ muiTheme, colouredBackground }) => {
       </Tabs>
     </Box>
   );
-}
+};
 
 export default NavBar;

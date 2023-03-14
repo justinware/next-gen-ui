@@ -10,6 +10,7 @@ import {
 
 import { ColourPalette, MuiColourPalette } from '../types';
 
+/* eslint-disable import/prefer-default-export */
 export const PALETTE_MAP = new Map<ColourPalette, MuiColourPalette>([
   [RED, red],
   [PINK, pink],

@@ -1,6 +1,6 @@
-import { FunctionComponent as FC, useState } from 'react';
+import { useState } from 'react';
 
-import { DrawerContainer } from '../../../../shared/components';
+import { DrawerContainer, SlidingPanels } from '../../../../shared/components';
 import {
   useAppSelector as useSelector,
   useAppDispatch as useDispatch
@@ -8,15 +8,17 @@ import {
 import { toggleSettings } from '../../store';
 import SettingsPanel from './settingsPanel';
 import ThemePanel from './themePanel';
-import { SlidingPanels } from '../../../../shared/components';
 
-const SettingsDrawer: FC = () => {
+const SettingsDrawer = () => {
 
   const dispatch = useDispatch();
   const settingsOpen = useSelector(({ shell }) => shell.settingsDrawerOpen);
   const [currentPanelIndex, setCurrentPanelIndex] = useState<number>(0);
 
-  const toggleDrawerOpen = () => { dispatch(toggleSettings()); }
+  const toggleDrawerOpen = () => {
+
+    dispatch(toggleSettings());
+  };
 
   const handleNavigateNextPanel = () => {
 
