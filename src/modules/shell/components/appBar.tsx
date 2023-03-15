@@ -37,7 +37,7 @@ const AppBarContainer = () => {
       <ContrastBox backgroundColor={backgroundColor}>
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} color="inherit">
-            Peak Next
+            Next Gen UI
           </Typography>
           <IconButton onClick={() => { dispatch(toggleSettings()); }} color="inherit">
             <SettingsIcon />
