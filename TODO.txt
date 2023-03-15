@@ -1,0 +1,14 @@
+TODO
+----
+
+* Stylelint
+* README
+* Vitest & (React) Testing Lib - Setup
+* Tests for components
+* State based Nav (connected-react-router)
+* App Module construct (per WOS model) in Shell, App, Nav and Store
+* Two demo modules - inc navigation, view switching and state (slice)
+* Error view / boundary / global error handling
+* Notifications
+* Logging
+* .env setup ?
